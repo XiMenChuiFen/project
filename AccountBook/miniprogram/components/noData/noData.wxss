@@ -1,0 +1,19 @@
+/* components/noData/noData.wxss */
+.no-data  {
+  position: absolute;
+  top:50%;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+  width: 50px;
+}
+.no-data image {
+  margin: 0 auto;
+  height: 50px;
+  width: 50px;
+}
+.no-data-text {
+  text-align: center;
+  font-size: 12px;
+  color: #969696
+}

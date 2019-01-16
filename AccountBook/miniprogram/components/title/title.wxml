@@ -1,0 +1,10 @@
+<!--components/title/title.wxml-->
+<view class='title'>
+  <view  class='return-icon'>
+    <block wx:if="{{returnIcon==1}}">
+    <image src='../../images/ad_arrow@3x.png' bindtap='returnUrl'  ></image>
+    </block>
+  </view>
+  <view>{{title}}</view>
+  <view class='return-icon'></view>
+</view>

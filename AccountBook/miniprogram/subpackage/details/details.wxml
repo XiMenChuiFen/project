@@ -1,0 +1,28 @@
+<!--miniprogram/subpackage/details/details.wxml-->
+<wxs src="../../utils/time.wxs" module="timeFunction" />
+<view  class="details">
+   <title text="详情"  type="1" urlText="../../pages/index/index"></title>
+   <view class='details-icon'>
+      <view wx:if="{{list.icon>=0}}"><image src='{{config.default.TypeUrl}}{{list.icon}}-2.png'></image></view>
+      <view>{{list.typeNane}}</view>
+   </view>
+   <view class='details-lists'>
+      <view class="lists">
+        <span>类型</span>{{list.currentType==0?"支出":"收入"}}
+      </view>
+      <view class="lists">
+        <span>金额</span>{{list.money}}
+      </view>
+      <view class="lists">
+        <span>日期</span>{{timeFunction.getYMD(list.time)}} {{timeFunction.getWeek(list.time)}}
+      </view>
+      <view class="lists remarks">
+        <view><span>备注</span></view>
+        <view>{{list.remarks}}</view>
+      </view>
+   </view>
+   <view class='details-buttom'>
+      <!-- <view>编辑</view> -->
+      <view bindtap='delect' data-id='{{list.id}}'>删除</view>
+   </view>
+</view>

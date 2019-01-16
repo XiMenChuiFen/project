@@ -1,0 +1,74 @@
+/* components/chart/chart.wxss */
+.component-chart {
+  height: 100%;
+  width: 100%;
+}
+.chart-lists-box {
+  position:relative;
+  height: 100%;
+  font-size: 11px;
+  box-sizing: border-box;
+}
+.chart-time-box,.chart-color-box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.chart-color-box {
+  height: 135px;
+ 
+}
+.chart-color-box>view{
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+.chart-time-box {
+  border-top: 1px solid #d1d1d1;
+  box-sizing: border-box;
+  color: #6c6c6c;
+}
+.chart-time {
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+.chart-color{
+  text-align: center;
+  height: 0%;
+  background: #fcdc2d;
+  /* transition: height 2s; */
+}
+.tody-none {
+  background: rgba(235, 235, 235, 0.4);
+}
+.tody{
+  background: #343233;  
+}
+.touch-box {
+  position: absolute;
+  top:-20px;
+  padding: 7px;
+  background: #343233;
+  border-radius: 5px;
+  color: #fefefe;
+  width: 180px;
+  box-sizing: border-box;
+  /* display: none; */
+}
+.touch-title {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 165px;
+  text-align: center;
+  border-radius: 5px;
+  background: #4e4c4d;
+}
+.touch-list {
+  padding-top: 5px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+.touch-no-data {
+  text-align: center;
+}

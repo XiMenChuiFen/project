@@ -1,0 +1,67 @@
+<wxs src="../../utils/time.wxs" module="timeFunction" />
+<wxs src="../../utils/money.wxs" module="moneyFunction" />
+<view>
+  <view class='conut-box'>
+    <title text="首页"></title>
+    <view class='pay-income-box'>
+      <view class='y'>
+        <view>{{year}}年</view>
+        <view class='select-y'>
+          <picker
+            mode="date"
+            value="{{dateTime}}"
+            fields="month"
+            bindchange="timeChange"
+          >
+          <view class="picker">
+            {{month}}
+            <span>月<image src='../../images/pull_arrow@2x.png'></image></span>
+          </view>
+          </picker>
+        </view>
+      </view>
+      <view class='income'>
+        <view class='income-title'>收入</view>
+        <view class='income-number'>{{moneyFunction.monthIncome(listsCount,0)}}<span>.{{moneyFunction.monthIncome(listsCount,1)}}</span></view>
+      </view>
+      <view class='pay'>
+        <view class='pay-title'>支出</view>
+        <view class='pay-number'>{{moneyFunction.monthPay(listsCount,0)}}<span>.{{moneyFunction.monthPay(listsCount,1)}}</span></view>    
+      </view>
+    </view>
+  </view>
+
+  <view class='scroll-box'>
+
+    <scroll-view  scroll-y style="height: 100vh;" class='scroll-wrap' >
+
+      <view class='lists-box'>
+          <block  wx:for="{{lists}}" wx:key="{{index}}" wx:for-item="list">
+            <view class='day-count'>
+              <view class='today-count'>{{timeFunction.getYM(list.time)}}<span>{{timeFunction.getWeek(list.time)}}</span></view>
+              <view class='income-count'>收入：<span>{{moneyFunction.dailyIncome(list.data)}}</span></view>
+              <view class='pay-count'>支出：<span>{{moneyFunction.dailyPay(list.data)}}</span></view>
+            </view>
+            <view class='list' wx:for="{{list.data}}" wx:key="{{index}}" wx:for-item="itemName" wx:if="{{itemName.delectType==0}}">
+            <navigator 
+              url='../../subpackage/details/details?icon={{itemName.typeIcon}}&money={{itemName.money}}&remarks={{itemName.remarks}}&typeNane={{itemName.typeNane}}&time={{itemName.time}}&currentType={{itemName.currentType}}&id={{itemName._id}}'>
+              <view class='list-content'>
+                <view class='list-icon'><image src="{{config.default.TypeUrl}}{{itemName.typeIcon}}-2.png"></image></view>
+                <view class='list-money'>
+                  <view class='list-text'>{{itemName.remarks}}</view>
+                  <view>{{itemName.currentType==0?"-":"+"}}{{moneyFunction.moneyToFixed(itemName.money)}}</view>
+                </view>
+              </view>
+            </navigator>
+            </view>
+          </block>
+          <!-- 无数据时展示 -->
+          <nodata wx:if="{{listsLength===0}}"></nodata>
+
+      </view>
+
+    </scroll-view>
+  
+  </view>
+
+</view>

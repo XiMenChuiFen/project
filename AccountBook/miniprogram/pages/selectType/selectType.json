@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "keyboard":"../../components/keyboard/keyboard",
+    "title":"../../components/title/title"
+  },
+  "navigationBarTitleText": "记账"
+}

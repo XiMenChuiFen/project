@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/chart/chart",
+    "pages/selectType/selectType",
+    "pages/bill/bill",
+    "pages/my/my",
+    "subpackage/details/details"
+  ],
+  "window": {
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fed953",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "subpackages": [
+    {
+      "root": "subpackage/login",
+      "pages": [
+        "login"
+      ]
+    }
+  ],
+  "tabBar": {
+    "color": "#343233",
+    "selectedColor": "#343233",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabbar/tabbar_detail_n@3x.png",
+        "selectedIconPath": "images/tabbar/tabbar_detail_s@3x.png"
+      },
+      {
+        "pagePath": "pages/chart/chart",
+        "text": "图表",
+        "iconPath": "images/tabbar/tabbar_chart_n@3x.png",
+        "selectedIconPath": "images/tabbar/tabbar_chart_s@3x.png"
+      },
+      {
+        "pagePath": "pages/selectType/selectType",
+        "text": "记账",
+        "iconPath": "images/tabbar/tabbar_add_n@3x.png",
+        "selectedIconPath": "images/tabbar/tabbar_add_n@3x.png"
+      },
+      {
+        "pagePath": "pages/bill/bill",
+        "text": "账单",
+        "iconPath": "images/tabbar/tabbar_discover_n@3x.png",
+        "selectedIconPath": "images/tabbar/tabbar_discover_s@3x.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/tabbar/tabbar_mine_n@3x.png",
+        "selectedIconPath": "images/tabbar/tabbar_mine_s@3x.png"
+      }
+    ]
+  }
+}

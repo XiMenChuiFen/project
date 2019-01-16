@@ -1,0 +1,88 @@
+/* subpackage/keyboard/keyboard.wxss */
+.key-title {
+  padding: 0 15px 0 15px;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  font-size: 14px;
+  height: 50px;
+  color: #343233;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+
+}
+.input-box {
+  width: 75%;
+  display: flex;
+  align-items:center;
+}
+.key-title input {
+  margin-left: 10px;
+  height: 50px;
+  /* background: #ccc; */
+  width: 80%;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #343233;
+}
+.money {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid #d9d9d9;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 28px;
+}
+.money image {
+  height: 50px;
+  width: 50px;
+}
+.money span {
+  display: flex;
+  align-items: center;
+}
+.key-box {
+  display: flex;
+
+}
+.key-number {
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.key {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 33.333333%;
+  text-align: center;
+  border-right: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  box-sizing: border-box;
+}
+.ok-key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  background: #fed953;
+}
+.key image {
+  width: 20px;
+  height: 20px;
+}
+.ok-key view {
+  font-size: 24px;
+  color: #fff;
+  width: 24px;
+}
+.key:active{
+  background-color:rgba(204, 204, 204,0.5);
+}
+.ok-key:active{
+  background-color:rgba(254, 217, 83,0.7);
+}

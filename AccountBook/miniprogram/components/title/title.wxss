@@ -1,0 +1,19 @@
+/* components/title/title.wxss */
+.title{
+  padding-top: 28px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background: #fcdc2d;
+  font-size: 18px;
+}
+.return-icon {
+  width: 20px;
+  height: 20px;
+}
+.return-icon image {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+}

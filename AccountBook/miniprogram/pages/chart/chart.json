@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "title": "../../components/title/title",
+    "chart": "../../components/chart/chart",
+    "nodata": "../../components/noData/noData"
+  },
+  "navigationBarTitleText": "图表"
+}

@@ -1,0 +1,56 @@
+<!--pages/selectType/selectType.wxml-->
+<view class='select-type'>
+   
+    <view class='tab-box'>
+      <title text="计账" type="1" urlText="../index/index"></title>
+      <view class='tab'>
+        <view  class='{{currentType==0?"income selectTab":"income"}}' bindtap='clickTab' data-current='0'>支出</view>
+        <view class='{{currentType==1?"pay selectTab":"pay"}}' bindtap='clickTab' data-current='1'>收入</view>
+      </view>
+    </view>
+
+    <view class='select-type-box' style='padding-bottom:{{padding}}px'>
+
+      <swiper class='type-swiper' bindchange="swiperChange" current-item-id='{{currentType}}' >
+        <block>
+          <swiper-item class="swiper-item" item-id="0">
+            <view class='type-box'>
+                <view class='types'
+                  wx:for="{{types}}" 
+                  wx:key="{index}" 
+                  bindtap='clickPayType' 
+                  data-id="{{item.id}}"
+                >
+                  <view class='type-icon'> <image src='{{config.default.TypeUrl}}{{item.icon}}.png'></image></view>
+                  <view class='type-text'>{{item.name}}</view>
+                </view>
+            </view>
+          </swiper-item>
+        </block>
+
+         <block>
+          <swiper-item  class="swiper-item" item-id="1">
+            <view class='type-box'>
+                <view class='types'
+                  wx:for="{{types}}" 
+                  wx:key="{index}" 
+                  bindtap='clickPayType' 
+                  data-id="{{item.id}}"
+                >
+                  <view class='type-icon'> <image src='{{config.default.TypeUrl}}{{item.icon}}.png'></image></view>
+                  <view class='type-text'>{{item.name}}</view>
+                </view>
+            </view>
+          </swiper-item>
+        </block>
+
+      </swiper>
+
+    </view>
+
+      <!-- wx:if='{{padding==200}}' -->
+    <view class='key-box'    animation="{{animationData}}">
+      <keyboard bindKeyboard='Keyboard'></keyboard>
+    </view>
+
+</view>

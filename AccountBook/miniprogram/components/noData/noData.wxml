@@ -1,0 +1,6 @@
+<!-- 首页无数据时-->
+<view class="no-data">
+  <image src='http://panhuangzhang.cn/img/AccountBookImg/icon/no_data@2x.png'></image>
+  <view class="no-data-text">无记录</view>
+</view>
+

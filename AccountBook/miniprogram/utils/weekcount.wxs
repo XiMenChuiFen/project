@@ -1,0 +1,28 @@
+ //一周支出和收入统计
+
+function weekAverage(type,data){
+   var average=0;//平均值
+   if (type==0){ //支出
+     average = (((data[0].pay) + (data[1].pay) + (data[2].pay) + (data[3].pay) + (data[4].pay) + (data[5].pay)) / 7).toFixed(2)
+   } else {//收入
+     average = (((data[0].income) + (data[1].income) + (data[2].income) + (data[3].income) + (data[4].income) + (data[5].income)) / 7).toFixed(2)
+   }
+  average = average > 0?average:0
+  return average
+ }
+function weekAll(type, data){
+
+  var all = 0;//一周总和
+  if (type == 0) { //支出
+    all = (((data[0].pay) + (data[1].pay) + (data[2].pay) + (data[3].pay) + (data[4].pay) + (data[5].pay)) ).toFixed(2)
+  } else { //收入
+    all = (((data[0].income) + (data[1].income) + (data[2].income) + (data[3].income) + (data[4].income) + (data[5].income)) ).toFixed(2)
+  }
+  all = all > 0 ? all : 0
+
+  return all
+}
+module.exports = {
+  weekAverage: weekAverage,
+  weekAll: weekAll
+}

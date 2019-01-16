@@ -1,0 +1,55 @@
+<!--pages/bill/bill.wxml-->
+<wxs src="../../utils/money.wxs" module="moneyFunction" />
+<view class='bill'>
+  <title text="账单"></title>
+  <view class='title-count'>
+    <view class="bill-selectTime">
+        <view>结余</view>
+        <view class='prcker'>
+            <picker
+              mode="date"
+              value="{{dateTime}}"
+              fields="year"
+              bindchange="timeChange"
+            >
+            <view class="picker prckers">
+              {{selectTime}}
+              <span>年<image src='../../images/pull_arrow@2x.png'></image></span>
+            </view>
+            </picker>
+        </view>
+    </view>
+    <view class='balance'>
+      {{moneyFunction.yearCount(lists,1)}}.<span>{{moneyFunction.yearCount(lists,0)}}</span>
+    </view>
+    <view class='money-count'>
+      <view class='bill-pay'>收入：
+        <span class="pay-number">{{moneyFunction.yearIncome(lists,1)}}.</span>
+        <span class="pay-number decimal">{{moneyFunction.yearIncome(lists,0)}}</span>
+      </view>
+      <view>支出: 
+        <span class="pay-number">{{moneyFunction.yearPay(lists,1)}}.</span>
+        <span class="pay-number decimal">{{moneyFunction.yearPay(lists,0)}}</span>
+      </view>
+    </view>
+  </view>
+  <view class='list-title'>
+    <view class='ym'>月份</view>
+    <view class="title-pay">收入</view>
+    <view class="title-income">支出</view>
+    <view class="title-balance">结余</view>
+  </view>
+  <view class='list-box'>
+    <scroll-view  scroll-y style="height:68vh ;" class='scroll-wrap' >
+      <view class='lists-box'>
+        <view wx:for="{{lists}}" wx:key="{{index}}" class='lists'>
+          <view class='ym'>{{index+1<10?"0"+(index+1):index+1}}月</view>
+          <view  class="title-income lists-color">{{moneyFunction.moneyToFixed(item.income)}}</view>
+          <view  class="title-balance lists-color">{{moneyFunction.moneyToFixed(item.pay)}}</view>
+          <view  class="title-balance lists-color">{{item.income-item.pay>=0?"+":""}}{{moneyFunction.moneyToFixed(item.income-item.pay)}}</view>
+        </view>
+      </view>
+      <nodata wx:if="{{noData===0}}"></nodata>
+    </scroll-view>
+  </view>
+</view>

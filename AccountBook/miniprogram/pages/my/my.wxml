@@ -1,0 +1,42 @@
+<!--pages/my/my.wxml-->
+<view class='my'>
+  <title text="我的"></title>
+  <view class="my-login">
+    <view class='user-img'>
+      <image src="../../images/tabbar_mine_s@3x.png" wx:if="{{user}}"></image>
+      <image src="{{userData.avatarUrl}}" wx:else></image>
+    </view>
+    <view class='my-login-button'>
+      <navigator  url="../../subpackage/login/login" hover-class="none" wx:if="{{user}}">登录</navigator>
+      <span  wx:else>{{userData.nickName}}</span>
+    </view>
+    <view class="update-user"><navigator  url="../../subpackage/login/login" hover-class="none" >更新资料</navigator></view>
+  </view>
+  <view class='user-data'>
+      <!-- <view class='sign-in'>
+        <view class='numbers'>0</view>
+        <view>已连续打卡</view>
+      </view> -->
+      <view class='day-count'>
+        <view class='numbers' wx:if="{{user}}">0</view>
+        <view class='numbers' wx:else>{{count.day}}</view>
+        <view>总计账天数</view>
+      </view>
+      <view class='count-number'>
+        <view class='numbers' wx:if="{{user}}">0</view>
+        <view class='numbers' wx:else>{{count.statistics}}</view>
+        <view>总计账笔数</view>
+      </view>
+  </view>
+  <view class='lists'>
+    <block wx:for="{{lists}}" wx:key="{{index}}">
+    <view class='list'>
+        <view class="list-icon"><image src="{{item.leftIcon}}"></image></view>
+        <view class="list-name">
+          <view>{{item.name}}</view>
+          <view class='list-right-icon'><image src="{{item.rightIcon}}"></image></view>
+        </view>
+    </view>
+    </block>
+  </view>
+</view>

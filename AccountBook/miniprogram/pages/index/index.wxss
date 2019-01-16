@@ -1,0 +1,143 @@
+.pay-income-box{
+  display: flex;
+  background: #fcdc2d;
+  padding-bottom: 5px;
+}
+.income,.pay,.y{
+  font-size: 12px;
+  color: #82763b;
+}
+.y{
+  padding-left: 16px;
+  box-sizing: border-box;
+  width: 30%;
+}
+.income,.pay{
+  width: 35%;
+}
+.select-y {
+  margin-top: 10px;
+  height: 28px;
+}
+.picker {
+  font-size: 18px;
+  color: #343233;
+  font-weight: bold;
+  border-right: 1px solid #95873f;
+}
+.picker span{
+  position: relative;
+  display: inline-block;
+  font-size: 12px;
+  width: 30px;
+}
+.picker span image {
+  position: absolute;
+  top: 2px;
+  right: 0px;
+  width: 15px;
+  height: 15px;
+}
+.income-title,.pay-title {
+  padding-left: 31px;
+  box-sizing: border-box;
+}
+.income-number,.pay-number {
+  margin-top: 7px;
+  height: 28px;
+  line-height: 28px;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  color: #343233;
+}
+.income-number span,.pay-number span {
+  font-size: 14px;
+}
+.day-count {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  font-size: 12px;
+  color: #969696;
+  border-bottom: 1px solid #e1e1e1;
+  background: #fefefe;
+}
+.today-count {
+  padding-left: 16px;
+  box-sizing: border-box;
+  width: 30%;
+}
+.today-count span{
+  margin-left: 5px;
+}
+.income-count,.pay-count{
+  text-align: right;
+  width: 30%;
+}
+.pay-count  {
+  width: 35%;
+  padding-right: 16px;
+}
+.conut-box {
+  position: relative;
+  z-index: 2;
+}
+.scroll-box {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.scroll-wrap {
+  background: #fefefe;
+}
+.lists-box {
+  padding-top: 135px;
+  padding-bottom: 30px;
+  box-sizing: border-box;
+}
+
+.list-content {
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.list-icon {
+  padding: 10px 0px 10px 16px;
+  width: 80px;
+  height: 40px;
+}
+.list-icon  image {
+  width: 40px;
+  height: 40px;
+  background: #f5f5f5;
+  border-radius: 50%;
+}
+.list-money {
+  padding: 20px 20px 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #e1e1e1; 
+  font-size: 14px;
+}
+.day-count+.list .list-money{
+  border:none;
+}
+.list-text {
+  width: 150px;
+  height: 20px;
+  line-height: 20px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.list-number {
+  padding-top: 15px;
+  text-align: center;
+  font-size: 12px;
+  color: #969696;
+}

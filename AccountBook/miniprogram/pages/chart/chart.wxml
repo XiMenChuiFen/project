@@ -1,0 +1,69 @@
+<!--pages/chart/chart.wxml-->
+<wxs src="../../utils/weekcount.wxs" module="weekcountFunction" />
+<wxs src="../../utils/money.wxs" module="moneyFunction" />
+<view class='chart-max-wrap'>
+  <view class='chart-data'>
+    <title text="图表"></title>
+    <view class="select-tab">
+      <view class='select-tab-left'>
+        <view  class="{{selectTabType==0?'tab-pay tab-select':'tab-pay'}}" bindtap='selectTabType' data-index="0">支出</view>
+        <view  class="{{selectTabType==1?'tab-income tab-select':'tab-income'}}" bindtap='selectTabType' data-index="1">收入</view>
+      </view>
+      <view class='select-tab-right'>
+        <view  class="{{selectTime==0?'tab-week tab-select':'tab-week'}}" bindtap='selectTime' data-time='0'>周</view>
+        <!-- <view  class="{{selectTime==1?'tab-month tab-select':'tab-month'}}" bindtap='selectTime' data-time='1'>月</view> -->
+        <!-- <view  class="{{selectTime==2?'tab-year tab-select':'tab-year'}}"  bindtap='selectTime' data-time='2'>年</view> -->
+      </view>
+    </view>
+    <view class="chart-box">
+      <view class='chart-title'>
+        <view class='chart-title-time'><view>本周</view></view>
+        <view class='chart-title-pay'>总{{selectTabType==0?'支出':'收入'}}：{{weekcountFunction.weekAll(selectTabType,mTime)}}</view>
+        <view class='chart-title-average'>平均值：{{weekcountFunction.weekAverage(selectTabType,mTime)}}</view>
+      </view>
+      <view class='chart-wrap'>
+        <view>
+          <chart xTime="{{mTime}}" type="{{selectTabType}}" chart="{{rankingList}}" bindclickChartList='clickChartList'></chart>
+        </view>
+      </view>
+      <view class='ranking-title'>
+        <view>
+          <span>{{today}}</span>
+          <span>{{selectTabType==0?'支出':'收入'}}排行榜</span>
+        </view>
+      </view>
+     </view>
+  </view>
+  
+  <view class='ranking-box'>
+    <scroll-view  scroll-y style="height:35vh ;" class='scroll-wrap' >
+      <view class='ranking-list-box'>
+        <block  wx:for="{{rankingList}}" wx:key="{{index}}">
+        <view class='ranking-list' >
+          <view class='list-icon'>
+            <image src="{{config.default.TypeUrl+item.typeIcon}}-2.png" ></image>
+          </view>
+          <view class='list-money'>
+            <view class='list-data'>
+              <view class='list-text'>{{item.remarks}}<span>{{moneyFunction.dayPercentage(rankingList,index)}}%</span></view>
+              <view>{{moneyFunction.moneyToFixed(item.money)}}</view>
+            </view>
+            <view class='progress-box'>
+              <progress 
+                percent="{{moneyFunction.dayPercentage(rankingList,index)}}" 
+                color="#fcdc2d" 
+                border-radius="100" 
+                active
+              />
+            </view>
+          </view>
+        </view>
+        </block>
+        <view class='ranking-text' wx:if="{{rankingList.length>0}}">排行前十位</view>
+        <nodata wx:if="{{rankingList.length==0}}"></nodata>
+      </view>
+    </scroll-view>
+  </view>
+
+ 
+</view>

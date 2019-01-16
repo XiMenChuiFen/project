@@ -1,0 +1,30 @@
+
+function chartPay(data,index){ //支出占本周支出百分比
+
+    var weekPay=0;
+    for(var i=0;i<data.length;i++){
+      weekPay += data[i].pay
+    }
+    if (weekPay == 0) {
+      return 0
+    }
+    var today = data[index].pay / weekPay*100
+  return Math.floor(today)
+}
+
+function chartIncome(data, index) { //收入占本周收入百分比
+
+  var weekIncome = 0;
+  for (var i = 0; i < data.length; i++) {
+    weekIncome += data[i].income
+  }
+  if (weekIncome==0){
+    return 0
+  }
+  var today = data[index].income / weekIncome * 100
+  return Math.floor(today)
+}
+module.exports = {
+  chartPay: chartPay,
+  chartIncome: chartIncome
+}

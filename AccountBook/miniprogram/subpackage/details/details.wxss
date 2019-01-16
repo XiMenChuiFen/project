@@ -1,0 +1,60 @@
+/* miniprogram/subpackage/details/details.wxss */
+.details {
+  height: 100vh;
+  width: 100%;
+  background: #fefefe;
+}
+.details-icon {
+  padding-bottom: 24px;
+  background: #fcdc2d;
+}
+.details-icon view {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 16px;
+  color: #343233;
+}
+.details-icon image {
+  padding-bottom: 15px;
+  padding-top: 10px;
+  height: 70px;
+  width: 70px;
+}
+.details-lists {
+  padding-left: 20px;
+}
+.lists {
+  padding: 20px 0;
+  font-size: 16px;
+  border-bottom:1px solid  #ebebeb;
+  color: #343233;
+}
+.lists span {
+  margin-right: 23px;
+  color: #969696;
+}
+.remarks {
+  display: flex;
+  min-height: 50px;
+}
+.remarks span {
+  display: inline-block;
+  /* width: 150px; */
+  width: 32px;
+}
+.details-buttom {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-top: 1px solid #ebebeb;
+}
+.details-buttom view {
+  padding: 20px 0;
+  width: 100%;
+  font-size: 14px;
+  color: #343233;
+  text-align: center;
+}

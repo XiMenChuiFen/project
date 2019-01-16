@@ -1,0 +1,48 @@
+<!--components/chart/chart.wxml-->
+<!-- 图表 -->
+<wxs src="../../utils/chart.wxs" module="chartFunction" />
+<wxs src="../../utils/money.wxs" module="moneyFunction" />
+<view class='component-chart'>
+  <view class='chart-lists-box'>
+    <view class='chart-color-box' >
+      <view      
+        wx:for="{{times}}" 
+        wx:key="{{index}}"
+        bindtouchstart='touchStart'
+        bindtouchend='touchEnd'
+        data-index="{{index}}"
+        data-time="{{item.time}}"
+        class="{{selectList==index&&item.pay/max<=0?'tody-none':''}}"
+      >
+      <view 
+        wx:if="{{type==0}}"
+        class="{{selectList==index?'chart-color tody':'chart-color'}}"
+        style="{{'width:30px'}};height:{{item.pay/max*100}}%;transition:height 2s"   
+      >
+      </view>
+        <view
+        wx:if="{{type==1}}"
+        style="{{'width:30px'}};height:{{item.income/max*100}}%;transition:height 2s"  
+        class="{{selectList==index ?'chart-color tody':'chart-color'}}"
+      >
+      </view>
+      </view> 
+    </view>
+    <view class='chart-time-box'>
+    <bolck wx:for="{{times}}" wx:key="{{index}}">
+      <view style="{{'width:30px'}}">
+        <view class='chart-time'>{{item.day}}</view>
+      </view>
+    </bolck>
+    </view>
+    <view class='touch-box' wx:if="{{touchChart}}" style="left:{{left}}px">
+      <view wx:if="{{touchData[selectList].pay!=0 || touchData[selectList].income!=0}}">
+        <view class='touch-title'>支出：{{moneyFunction.moneyToFixed(touchData[selectList].pay)}} 收入：{{moneyFunction.moneyToFixed(touchData[selectList].income)}}</view>
+        <view class="touch-list">支出占本周支出的: {{chartFunction.chartPay(touchData,selectList)}}%</view>
+        <view class="touch-list">支出占本周收入的: {{chartFunction.chartIncome(touchData,selectList)}}%</view>
+      </view>
+      <view wx:else class='touch-no-data'>没有数据</view>
+    </view>
+  </view>
+
+</view>

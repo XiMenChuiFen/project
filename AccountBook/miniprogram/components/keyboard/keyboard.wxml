@@ -1,0 +1,34 @@
+<!--subpackage/keyboard/keyboard.wxml-->
+<view>
+  <view class='money'>
+    <image src='{{config.default.IconUrl}}money.png'></image>
+    <span>{{moneyHtml.length==0?0:moneyHtml}}</span>
+  </view>
+  <view class='key-title'>
+    <view class='input-box'>
+      <label>备注:</label>
+      <input type="text" placeholder='请输入备注' bindinput="inputChage" value="{{remarks}}"></input>
+    </view>
+    <view class='date'>
+      <picker
+        mode="date"
+        value="{{date}}"
+        start="{{start}}"
+        end="{{end}}"
+        bindchange="timeChange"
+      >
+      <view class="picker">{{date}}</view>
+      </picker>     
+    </view>
+  </view>
+
+  <view class='key-box'>
+    <view class='key-number'>
+      <view class='key' wx:for="{{keyNumber}}" wx:key="{index}" bindtap='clickKey' data-key='{{item}}'>{{item}}</view>
+      <view class='key'  bindtap='clickKey' data-key='dele'>dele</view>
+    </view>
+    <view class='ok-key' bindtap='ok'><view>确认</view></view>
+  </view>
+
+
+</view>

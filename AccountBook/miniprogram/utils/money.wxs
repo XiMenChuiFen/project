@@ -1,0 +1,117 @@
+
+function moneyToFixed(data){ //留小数后两位
+  return data.toFixed(2)
+}
+
+function dailyPay (e) { //每日支出
+  var pay=0;
+  for (var i=0;i<e.length;i++) {
+    if (e[i].currentType===0){
+      pay = pay + Math.abs(e[i].money);
+    }
+  }
+  return pay.toFixed(2);
+}
+function dailyIncome(e) { //每日收入
+  var pay = 0;
+  for (var i = 0; i < e.length; i++) {
+    if (e[i].currentType === 1) {
+      pay = pay + Math.abs(e[i].money);
+    }
+  }
+  return pay.toFixed(2);
+}
+
+function monthPay (e,number) { //每月支出
+  var pay = 0;
+  for (var i = 0; i < e.length; i++) {
+    for (var p = 0; p < e[i].data.length;p++){
+      if (e[i].data[p].currentType === 0) {
+        pay = pay + Math.abs(e[i].data[p].money);
+      }
+    }
+  }
+  var payArray = (pay + 0.00).toFixed(2).toString().split(".");
+
+  return payArray[number];
+ 
+}
+
+function monthIncome(e, number) { //每月收入
+  var pay = 0;
+  for (var i = 0; i < e.length; i++) {
+    for (var p = 0; p < e[i].data.length; p++) {
+      if (e[i].data[p].currentType === 1) {
+        pay = pay + Math.abs(e[i].data[p].money);
+      }
+    }
+  }
+  var payArray = (pay + 0.00).toFixed(2).toString().split(".");
+
+  return payArray[number];
+
+}
+
+function dayPercentage(data,index){ //每次支出占一天总和百分比
+  var countMoney=0;
+  if (data[index].money==0){
+    return "0.00";
+  }
+  for(var i=0;i<data.length;i++){
+      countMoney += Number(data[i].money)
+  }
+  var percentage = (data[index].money / countMoney*100).toFixed(2);
+  return percentage;
+}
+
+function yearPay (data,number) { //一年支出
+  var  money=0; 
+  for(var i=0;i<data.length;i++){
+    money+=data[i].pay
+  }
+  var moneyArray =money.toFixed(2).split(".")
+  if (number>0){
+    return moneyArray[0]
+  }
+
+  return moneyArray[1]
+}
+function yearIncome(data, number) { //一年收入
+  var money = 0;
+  for (var i = 0; i < data.length; i++) {
+    money += data[i].income
+  }
+  var moneyArray = money.toFixed(2).split(".")
+  if (number > 0) {
+    return moneyArray[0]
+  }
+
+  return moneyArray[1]
+}
+
+function yearCount(data, number){
+  var pay = 0;
+  var income=0;
+  for (var i = 0; i < data.length; i++) {
+    pay += data[i].pay
+    income += data[i].income
+  }
+  var moneyArray = (income - pay).toFixed(2).split(".")
+  if (number > 0) {
+    return moneyArray[0]
+  }
+
+  return moneyArray[1]
+} 
+
+module.exports={
+  moneyToFixed: moneyToFixed,
+  dailyPay: dailyPay,
+  dailyIncome: dailyIncome,
+  monthPay: monthPay,
+  monthIncome: monthIncome,
+  dayPercentage: dayPercentage,
+  yearPay: yearPay,
+  yearIncome: yearIncome,
+  yearCount: yearCount
+}

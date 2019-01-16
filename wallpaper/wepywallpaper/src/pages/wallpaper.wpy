@@ -1,0 +1,142 @@
+<style lang="less">
+  .wallpaper-box {
+    margin-top: 20rpx;
+  }
+  .wallpaper-wrap {
+    padding-left: 25rpx;
+    padding-right: 25rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .wallpaper {
+    margin-bottom: 25rpx;
+    height: 610rpx;
+    width: 343rpx;
+    background: url("http://21ux.gzittc.net/panhuangzhang/wepy-wallpaper/back.png");
+    background-size: 100% 100%;
+  }
+  .wallpaper image {
+    height: 100%;
+    width: 100%;
+  }
+  .foot-title {
+    padding-bottom: 20rpx;
+    font-size: 24rpx;
+    color: #6f6f6f;
+    text-align: center;
+  }
+  .nav {
+    display: block;
+    width: 375rpx;
+    float: left;
+  }
+</style>
+<template>
+  <view class="wallpaper-box">
+    <scroll-view scroll-y style="height: 100vh;" bindscrolltolower="loadWallpaper" lower-threshold="200" >
+
+        <navigator class="nav" wx:for="{{wallpaperList}}" wx:key="index" url="./seeWallpaper?id={{item.id}}&url={{item.img}}" hover-class="none">
+          <view class="wallpaper-wrap" >
+            <view class="wallpaper">
+              <image src="{{item.img}}" alt="img"/>
+            </view> 
+          </view>
+        </navigator>
+
+
+    <view class="foot-title" wx:if="{{footTitle}}">我是有底线的，看看其他分类吧</view>
+    </scroll-view> 
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Wallpaper extends wepy.page {
+
+    config = {
+      navigationBarTitleText: ' ',
+    }
+    components = {
+
+    }
+
+
+    data = {
+      wallpaperList:[],
+      wallpaperData:[],
+      numbers:1,
+      footTitle:false,
+    }
+
+    computed = {
+
+    }
+  
+    methods = {
+    }
+
+
+
+    onLoad(e) {
+      // console.log(e);
+      wx.setNavigationBarTitle({
+        title: e.name
+      })
+      this.getWallpaper(e);
+      wx.showLoading({
+        title: '请稍等',
+      })
+    }
+
+    //获取6张壁纸
+    getWallpaper(e) {
+      let that=this;
+      wx.request({
+          url: `http://service.picasso.adesk.com/v1/vertical/category/${e.id}/vertical?limit=60&adult=false&first=1&order=new`,
+          success: function (res) {
+              // console.log(res.data.res.vertical);
+              for (let index = 0; index < res.data.res.vertical.length; index++) {
+                if(index<6){
+                  that.wallpaperList.push(res.data.res.vertical[index])
+                }
+              }
+              that.wallpaperData=res.data.res.vertical;
+               setTimeout(() => {
+                 wx.hideLoading();
+               }, 500);
+              // console.log(that.wallpaperList)
+              that.$apply();
+          }
+      });
+      
+    }
+    //加载更多壁纸
+    load(e){
+      this.wallpaperList=[];
+      for(let index = 0; index < this.wallpaperData.length; index++){
+          if(index<e){
+            this.wallpaperList.push(this.wallpaperData[index]);
+          }
+      }
+
+    }
+    //触底函数
+    loadWallpaper(){
+      
+      this.numbers=this.numbers+1;
+      let n= this.numbers*6;
+      // console.log(this.wallpaperList.length,this.wallpaperData.length,n);
+      if(this.wallpaperList.length!==this.wallpaperData.length){
+        this.load(n)
+      }else{
+        this.footTitle=true;
+      }
+      
+    }
+
+
+  }
+</script>

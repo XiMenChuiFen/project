@@ -1,0 +1,176 @@
+<style lang="less">
+  .user-box{
+    padding-top: 40rpx;
+    height: 285rpx;
+    background: #f7f7f7
+  }
+  .my {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+  }
+  .user-img{
+    margin: 0 auto 35rpx auto;
+    height: 129rpx;
+    width: 129rpx;
+  }
+  .user-img image {
+    height: 129rpx;
+    width: 129rpx;
+    border-radius: 50%;
+  }
+  .user-name {
+    text-align: center;
+    font-size: 36rpx;
+    color: #6f6f6f;
+  }
+  .my-collection {
+    padding-left: 20rpx;
+    font-size: 32rpx;
+    background: #f7f7f7;
+    font-weight: bold;
+  }
+
+  .wallpaper-box{
+    padding-top: 20rpx;
+    padding-right: 20rpx;
+    padding-left: 20rpx;
+    box-sizing: border-box;
+    margin-top: 375rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    line-height: 395rpx;
+  }
+  .img-box {
+   
+    width: 220rpx;
+    height: 395rpx;
+  }
+  .img-box image {
+    width: 100%;
+    height: 100%;
+  }
+  .nav {
+    display: block;
+     margin-bottom: 50rpx;
+     width: 220rpx;
+    height: 395rpx;
+  }
+  .foot-title {
+    padding-bottom: 20rpx;
+    font-size: 24rpx;
+    color: #6f6f6f;
+    text-align: center;
+  }
+</style>
+<template>
+  <view class="my-box" wx:if="{{isshaw}}">
+    <view class="my">
+      <view class="user-box">
+        <view class="user-img"><image src="{{userData.avatarUrl}}" alt="img"/></view>
+        <view class="user-name">{{userData.nickName}}</view>
+      </view>
+      <view class="my-collection">我的收藏({{wallpaperList.length}})</view>
+    </view>
+    <view class="wallpaper-box">
+         <navigator class="nav" wx:for="{{wallpaperList}}" wx:key="index" url="./seeWallpaper?id={{item.wallpaper_id}}&url={{item.url}}" hover-class="none">
+            <view class="img-box">
+              <image src="{{item.url}}" alt="img"/>
+            </view>
+         </navigator>
+    </view>
+    <view class="foot-title" wx:if="{{footTitle}}">我是有底线的，看看首页分类吧</view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class My extends wepy.page {
+
+    config = {
+      navigationBarTitleText: '我的',
+    }
+    components = {
+
+    }
+
+
+    data = {
+      isshaw:false,
+      userData:'',
+      wallpaperList:[],
+      userID:'',
+      footTitle:false,
+    }
+
+    computed = {
+
+    }
+  
+    methods = {
+
+    }
+    onLoad() {
+    }
+    onShow() {
+      let that=this;
+      wx.getStorage({
+        key: 'user',
+        success: function(res) {
+          that.isshaw=true;
+        },
+        fail:function(res){
+          console.log(res);
+          that.isshaw=false;
+          wx.switchTab({
+            url: './index'
+          })
+        }
+      })
+
+      this.userData=this.$parent.globalData.userInfo;
+      wx.getStorage({
+        key: 'userId',
+        success: function(res) {
+          console.log(res.data);
+          // if (res.errMsg =='getStorage:ok'){
+            that.userID=res.data;
+            that.getWallpaper(res.data)
+            that.$apply();
+          // }
+        }
+      })
+
+
+    }
+
+    //获取所有收藏壁纸
+    getWallpaper(id){
+      let that =this;
+      // console.log(that.userID)
+      wx.showLoading({
+        title: '请稍等',
+      })
+      wx.request({
+        url: 'http://21ux.gzittc.net/panhuangzhang/wepy-wallpaper/api/public/GetCollection?', 
+        data: {
+          wxId: id,
+        },
+        header: {
+          'content-type': 'application/json' 
+        },
+        success: function(res) {
+          // console.log(res.data);
+          that.wallpaperList=res.data.wallpaper;
+          that.footTitle=true;
+          that.$apply();
+          wx.hideLoading();
+        }
+      })
+    }
+  }
+
+</script>

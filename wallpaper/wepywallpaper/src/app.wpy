@@ -1,0 +1,114 @@
+<style lang="less">
+page {
+  // height: 100%;
+  width: 100%;
+  background: #f7f7f7;
+}
+</style>
+
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+
+export default class extends wepy.app {
+  config = {
+    pages: [
+      
+      'pages/index',
+      'pages/wallpaper',
+      'pages/my',
+      'pages/seeWallpaper'
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#282b32',
+      navigationBarTitleText: '分类',
+      navigationBarTextStyle: 'white',
+      backgroundColor:'#f7f7f7'
+    },
+    tabBar: {
+      color:'#a4aeb9',
+      selectedColor:'#282b32',
+      list: [{
+        pagePath: "pages/index",
+        iconPath:"image/type.png",
+        selectedIconPath:"image/select-type.png",
+        text: "分类"
+      },{
+        pagePath: "pages/my",
+        iconPath:"image/my.png",
+        selectedIconPath:"image/select-my.png",
+        text: "我的"
+      }]
+    }
+  }
+
+  globalData = {
+    userInfo: null
+  }
+
+  constructor () {
+    super()
+    this.use('promisify')
+  }
+
+  onLaunch() {
+    // this.testAsync()
+    this.getUserId();
+  }
+
+  // sleep (s) {
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       resolve('promise resolved')
+  //     }, s * 1000)
+  //   })
+  // }
+
+  // async testAsync () {
+  //   const data = await this.sleep(3)
+  //   console.log(data)
+  // }
+
+  // getUserInfo(cb) {
+  //   const that = this
+  //   if (this.globalData.userInfo) {
+  //     return this.globalData.userInfo
+  //   }
+  //   wepy.getUserInfo({
+  //     success (res) {
+  //       that.globalData.userInfo = res.userInfo
+  //       cb && cb(res.userInfo)
+  //     }
+  //   })
+  // }
+  getUserId(){
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: 'http://21ux.gzittc.net/panhuangzhang/weixinlogin/login.php',
+            method: 'GET',
+            data: {
+              code: res.code,
+              grant_type: 'authorization_code'
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function (res) {
+              var obj = JSON.parse(res.data)
+              // console.log(obj);
+              wx.setStorage({
+                key: "userId",
+                data: obj.openid
+              })
+            }
+          })
+        }
+      }
+    });
+  }
+}
+</script>

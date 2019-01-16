@@ -1,0 +1,177 @@
+<style lang="less">
+  .see-box{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  .wallpaper-box {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background: #000;
+  }
+  .wallpaper-box image{
+    width: 100%;
+    height:auto;
+  }
+  .nav-box {
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    
+    text-align: center;
+  }
+  .nav image {
+    width: 60rpx;
+    height: 50rpx;
+  }
+  .nav-text {
+    font-size: 24rpx;
+    color: #fff;
+  }
+</style>
+<template>
+  <view class="see-box">
+    <view class="wallpaper-box">
+      <image src="{{url}}" bindload="imageLoad"/>
+    </view>
+    <view class="nav-box">
+      <view class="nav" @tap="clickScreen">
+        <view><image src="../image/screen.png" /></view>
+        <view class="nav-text">全屏</view>
+      </view>
+      <view class="nav" @tap="clickCollection">
+        <view><image src="{{img}}"/></view>
+        <view class="nav-text">收藏</view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class see extends wepy.page {
+
+    config = {
+      navigationBarTitleText: '预览',
+      disableScroll:true,
+    }
+    components = {
+
+    }
+
+
+    data = {
+      url:'',
+      id:'',
+      userID:'',
+      img:'../image/like.png'
+    }
+
+    computed = {
+
+    }
+  
+    methods = {
+
+    }
+    onLoad(e) {
+      // console.log(e);
+      let that=this;
+      this.url=e.url;
+      this.id=e.id;
+      wx.getStorage({
+        key: 'userId',
+        success: function(res) {
+          console.log(res.data);
+          that.userID=res.data;
+          that.CollectionType(e.id,res.data);
+        }
+      })
+      wx.showLoading({
+        title: '请稍等',
+      })
+      
+    }
+    //全屏
+    clickScreen(){
+      // console.log(this.url);
+      wx.previewImage({
+        current: this.url, 
+        urls: [this.url] 
+      })
+
+    }
+    //收藏或取消收藏
+    clickCollection(){
+      // console.log(this.id,this.url,this.userID);
+      let that =this;
+      wx.request({
+        url: 'http://21ux.gzittc.net/panhuangzhang/wepy-wallpaper/api/public/collection?', 
+        data: {
+          wallpaperId: that.id ,
+          wxId: that.userID,
+          url:that.url
+        },
+        header: {
+          'content-type': 'application/json' 
+        },
+        success: function(res) {
+          // console.log(res.data);
+
+          if(res.data.type==1){
+            that.img='../image/select-like.png'
+          }else{
+            that.img='../image/like.png'
+          }
+          wx.showToast({
+            title: res.data.text,
+            icon: 'success',
+            duration: 1000
+          })
+          that.$apply();
+        }
+      })
+
+    }
+
+    //是否收藏 icon高亮
+    CollectionType(waid,wxid){
+      let that =this;
+      wx.request({
+        url: 'http://21ux.gzittc.net/panhuangzhang/wepy-wallpaper/api/public/WallpaperType?', 
+        data: {
+          wallpaperId: waid ,
+          wxId: wxid
+        },
+        header: {
+          'content-type': 'application/json' 
+        },
+        success: function(res) {
+          // console.log(res.data);
+          if(res.data.collection==1){
+            that.img='../image/select-like.png'
+          }else{
+            that.img='../image/like.png'
+          }
+          that.$apply();
+        }
+      })
+
+    }
+
+    //图片加载完成
+    imageLoad(){
+      console.log('加载完');
+      wx.hideLoading();
+    }
+
+  }
+
+</script>

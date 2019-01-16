@@ -1,0 +1,131 @@
+.file-name {
+  position: relative;
+  padding-top: 60px;
+  /* width: 13%;  */
+  /* height: 100%; */
+  width: 220px;
+  background: #f5f5f5; 
+  border-right: 1px solid #e0e1e5;
+}
+::-webkit-scrollbar
+{
+    /* width: 0px;
+    height: 16px;
+    background-color: rgba(50, 65, 87, 0.76) */
+}
+.scroll {
+  height:85%;
+  overflow-y: auto;
+}
+.new-file {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #d1dbe5;
+  width: 100%;
+}
+.el-tree {
+  background: #f5f5f5 !important; 
+  border:none !important;
+}
+.file-icon {
+  position: relative;
+  top: 5px;
+  display: inline-block;
+  width:24px;
+  height: 20px;
+  background: #000;
+  background: url("../../imgs/sprite-4ce3c9eaa2.svg") no-repeat;
+  background-position: 88.6685552407932% 64.86486486486487%;
+}
+.file {
+  display: inline-block;
+  width: 60%  !important;
+  overflow: hidden;
+  text-overflow : ellipsis ;
+}
+.el-tree-node__expand-icon{
+  margin-top: -25px;
+}
+.nav-foot {
+  position: absolute;
+  bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-pattern{
+  /* width: 100px;
+  display: flex;
+  justify-content: center; */
+}
+.file-nav-none{
+  font-size:12px;
+  color:#324157;
+  cursor: pointer;
+}
+.file-nav-none:hover{
+  color: #20a0ff;
+}
+.el-tree--highlight-current .el-tree-node.is-current>.el-tree-node__content {
+  background-color: rgba(32, 160, 255, .2) !important;
+}
+.el-icon-menu{
+  font-size:12px;
+  color:#bfcbd9 ;
+}
+.el-icon-menu:hover {
+  color: #20a0ff;
+}
+.file-menu {
+  position: relative;
+  display: none;
+  float: right;
+  margin-right: 10px;
+}
+.el-tree-node__content:hover .file-menu {
+  display: block;
+}
+.add-file-input {
+  padding: 20px;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 11;
+  top: 50%;
+  left: 50%;
+  margin-top: -95px;
+  margin-left: -170px;
+  width: 340px;
+  /* height: 190px; */
+  background: #fff;
+  box-shadow: 0px 1px 16px 0 rgba(90, 109, 122, 0.41);
+  border-radius: 5px;
+}
+.add-file-title {
+  margin-bottom: 20px;
+  color: #959fab;
+}
+.add-file-text {
+  margin-bottom: 20px;
+}
+.add-file-button {
+  float: right;
+}
+.el-message {
+  z-index: 6;
+}
+.menu-icon i {
+  font-size: 14px;
+  color: rgb(176, 183, 197);
+}
+.delete {
+  margin-left: 5px;
+}
+.menu-icon i:hover {
+  color: #20a0ff
+}

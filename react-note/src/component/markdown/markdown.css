@@ -1,0 +1,129 @@
+.Markdown-box {
+  position: relative;
+  padding: 60px 0 0 0;
+  width: calc(100% - 470px);
+  font-family: serif;
+  background: #fff;
+  font-size: 18px;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.mar {
+  height: 100%;
+}
+.Mask {
+  position: absolute;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a5a4a4
+}
+
+.m-title {
+  padding: 20px 50px 20px 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d1dbe5;
+  margin-bottom: 50px;
+}
+.m-title-buttom {
+  display: flex;
+}
+.m-title-buttom button{
+  margin-left: 20px;
+}
+.update-time span{
+  height: 100%;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  color: #c2c2c2;
+}
+.m-title-input {
+  width: 60%
+}
+.m-title input{
+  display: inline-block;
+  width: 100%;
+  border:none;
+  font-size: 20px;
+}
+.edit {
+  box-sizing: border-box;
+  display: flex;
+  height:calc(100% - 128px);
+  width: 100%;
+  overflow:auto;
+}
+.editor {
+  width: 100%;
+}
+.editor-toolbar{
+  /* width:100% !important; */
+  width:100% !important;
+  position: fixed !important;
+  top: 134px;
+  z-index: 9;
+  border: none !important; 
+  border-bottom: 1px solid #ddd !important;
+}
+.CodeMirror {
+  max-width: 100%  !important;
+  box-sizing: border-box !important;
+  border: none !important; 
+
+}
+
+.Markdown-box h1,.Markdown-box h2,.Markdown-box h3,.Markdown-box h4,.Markdown-box h5 {
+  margin: 10px 0 20px 0;
+  color: #606c71;
+}
+.Markdown-box p {
+  /* margin-top: 20px !important; */
+  margin-bottom: 20px;
+  color: #606c71;
+}
+.Markdown-box a {
+  color: #1e6bb8;
+    text-decoration: none;
+}
+.Markdown-box ul,.Markdown-box ol {
+  padding-left: 50px;
+  box-sizing: border-box;
+  color: #606c71;
+}
+.Markdown-box blockquote {
+  margin: 10px 0 10px 0;
+  padding-left: 20px;
+  color: #819198;
+  border-left: 0.3rem solid #dce6f0;
+}
+.Markdown-box pre {
+  /* padding: 15px; */
+  border-radius: 5px;
+}
+.editor-preview, .editor-preview-side {
+  background: #fff !important; 
+}
+
+.el-message {
+  z-index: 20 !important;
+}
+.CodeMirror-vscrollbar {
+    opacity: 0;
+}
+.CodeMirror-wrap {
+ height:100% !important;
+  overflow-y: auto !important;
+}
+.Markdown-box .editor-preview-active {
+  padding-left: 20px !important;
+  box-sizing: border-box !important;
+}
+.Markdown-box .CodeMirror-sizer {
+  padding-left: 10px !important;
+  box-sizing: border-box !important;
+}

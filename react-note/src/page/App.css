@@ -1,0 +1,11 @@
+#root{
+ /* overflow: hidden; */
+}
+.wrap {
+  height: 100vh;
+  width: 100%;
+}
+.content {
+  height: 100%;
+  display: flex;
+}

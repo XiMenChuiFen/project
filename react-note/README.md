@@ -3,6 +3,12 @@
   ```
     基于react框架开发Markdowm笔记
   ```
+#### 主要功能
+
+* Markdowm笔记创建
+* 分享笔记链接
+* 下载笔记 文件为markdowm文件
+
 #### 运行项目
 1. 安装npm
 2. npm install

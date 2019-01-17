@@ -14,6 +14,9 @@ npm run dev
 # build for production with minification
 npm run build
 
+```
+
+
 #### 技术点
 
 * 翻译使用有道翻译

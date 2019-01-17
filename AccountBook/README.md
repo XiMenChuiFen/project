@@ -10,4 +10,7 @@
 > 效果图：
 
 ![首页](https://github.com/XiMenChuiFen/project/blob/master/AccountBook/%E6%95%88%E6%9E%9C%E5%9B%BE/IMG_0075.PNG) 
-![avatar](https://github.com/XiMenChuiFen/project/blob/master/AccountBook/%E6%95%88%E6%9E%9C%E5%9B%BE/IMG_0074.PNG) 
+![avatar](https://github.com/XiMenChuiFen/project/blob/master/AccountBook/%E6%95%88%E6%9E%9C%E5%9B%BE/IMG_0076.PNG) 
+![avatar](https://github.com/XiMenChuiFen/project/blob/master/AccountBook/%E6%95%88%E6%9E%9C%E5%9B%BE/IMG_0077.PNG) 
+![avatar](https://github.com/XiMenChuiFen/project/blob/master/AccountBook/%E6%95%88%E6%9E%9C%E5%9B%BE/IMG_0078.PNG) 
+![avatar](https://github.com/XiMenChuiFen/project/blob/master/AccountBook/%E6%95%88%E6%9E%9C%E5%9B%BE/IMG_0079.PNG) 

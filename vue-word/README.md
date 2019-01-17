@@ -1,8 +1,8 @@
 # vue-word
 
-> A Vue.js project
+* 内部使用的单词管理程序
 
-## Build Setup
+#### 运行
 
 ``` bash
 # install dependencies
@@ -14,8 +14,19 @@ npm run dev
 # build for production with minification
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+#### 技术点
+
+* 翻译使用有道翻译
+* 发音使用百度发音
+* UI使用ElementUi
+
+> 效果图
+
+![](https://github.com/XiMenChuiFen/project/blob/master/vue-word/%E6%95%88%E6%9E%9C%E5%9B%BE/1.PNG)
+![](https://github.com/XiMenChuiFen/project/blob/master/vue-word/%E6%95%88%E6%9E%9C%E5%9B%BE/2.PNG)
+![](https://github.com/XiMenChuiFen/project/blob/master/vue-word/%E6%95%88%E6%9E%9C%E5%9B%BE/3.PNG)
+![](https://github.com/XiMenChuiFen/project/blob/master/vue-word/%E6%95%88%E6%9E%9C%E5%9B%BE/4.PNG)
+![](https://github.com/XiMenChuiFen/project/blob/master/vue-word/%E6%95%88%E6%9E%9C%E5%9B%BE/5.PNG)

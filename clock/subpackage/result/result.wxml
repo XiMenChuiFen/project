@@ -1,0 +1,47 @@
+<!--subpackage/result/result.wxml-->
+<wxs src="./result.wxs" module="resultFunction" />
+<view class='result'>
+  <view class='result-content'>
+    <view class='user-box'>
+    <view class='user'>
+        <view>
+          <image src="http://10.21.40.40/star2/img/user_face/{{storage.face}}" class='user-img'></image>
+          <text class='user-name'>{{storage.name}}</text>
+          <!-- <text class="login-type">{{resultFunction.filter(myData)}}</text> -->
+          <view class="login-type"><view class='type-text'>正常</view></view>
+        </view>
+        <view class="today-sign">
+          <view class='today'>
+            <view>今日签到</view>
+            <view class='today-time'>{{resultFunction.sign(myData,0)}}</view>
+          </view>
+          <view class='today'>
+             <view>今日签退</view>
+             <view class='today-time'>{{resultFunction.sign(myData,1)}}</view>
+          </view>
+        </view>
+    </view>
+    </view>
+    <view class='whole-data'>
+        <view class='title'>
+          <text>今天全员签到情况</text>
+        </view>
+        <view class='lists'>
+          <view
+            wx:for="{{resultFunction.sort(lists)}}" 
+            wx:key="{{index}}" 
+            wx:if="{{item.name!==storage.name}}"
+            class="{{resultFunction.filter(item.data)=='未签到' || resultFunction.filter(item.data)=='迟到'?'list list-color':'list'}}"
+          >
+            <view class='list-name'>{{item.name}}</view>
+            <view class='list-time'>{{item.data.start_time}}</view>
+            <view class='list-type'>{{resultFunction.filter(item.data)}}</view>
+          </view>
+        </view>
+    </view>
+
+  </view>
+  <view class='result-buton'>
+    <button bindtap='loginAndlogout'>签到/签退</button>
+  </view>
+</view>

@@ -1,0 +1,16 @@
+<!--subpackage/binduser/binduser.wxml-->
+<view class="binduser">
+  <image src='http://10.21.40.40/phz/WeixinStar/img/background2.png'></image>
+  <view class='explain'>
+    <view><text>请输入你的账号密码，账号密码使用本地存储，不会提交到数据库，本地数据还在情况下不需要再次绑定。</text></view>
+    <view><text>*获取用户平台的头像姓名</text></view>
+    <view><text>*获取用户平台的账号密码</text></view>
+  </view>
+  <view class='form'>
+    <form bindsubmit="binduser">
+        <input type='text' placeholder="请输入账号"  name="name"></input>
+        <input type='password' placeholder="请输入密码"  name="password"></input>
+        <button form-type="submit">下一步</button>
+    </form>
+  </view>
+</view>

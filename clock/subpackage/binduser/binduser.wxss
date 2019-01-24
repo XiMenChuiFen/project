@@ -1,0 +1,41 @@
+/* subpackage/binduser/binduser.wxss */
+.binduser {
+  width: 100%;
+  height: 100vh;
+  background: #F3F9FE;
+}
+.binduser image {
+  position: absolute;
+  height: 808rpx;
+  width: 100%;
+  opacity: .1;
+}
+.form {
+  display: inline-block; 
+  width: 100%;
+}
+.binduser input{
+  margin: 0 auto;
+  width: 85%;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #64b5f6;
+  color:rgba(0, 0, 0, 0.3);
+}
+.binduser button {
+  margin: o auto;
+  width: 85%;
+  background-color:#1976d2;
+  color:#ffffff;
+}
+.explain {
+  padding-top:50px;
+  padding-bottom: 30px;
+  width: 85%;
+  margin:  0 auto;
+  font-size:13px;
+  line-height:37rpx;
+  color:rgba(0, 0, 0, 0.3);
+}
+.explain view{
+  margin-bottom: 5px;
+}

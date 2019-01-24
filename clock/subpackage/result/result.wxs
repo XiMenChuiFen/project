@@ -1,0 +1,66 @@
+function filter (data) {
+  var result;
+  if(!data){
+    result="未签到"
+  }else{
+    var ymd = data.new_date.replace(getRegExp("-", "g"), "/");
+    var time = ymd + " " + data.start_time;
+    if (getDate(time) > getDate(ymd+" "+'08:10:00')){
+      result = "迟到"
+    }else{
+      result = "正常"
+    }
+  }
+  return result;
+}
+function sort(data) {
+  var lists=[];
+  var noSign=[];//未签到
+  var sing=[];// 正常签到
+  var late=[];//迟到
+  for(var i=0;i<data.length;i++){
+    // var time = data[i].data.new_date + " " + data[i].data.start_time;
+   
+    if (!data[i].data) {
+      noSign.push(data[i])
+    } else {
+      var ymd = data[i].data.new_date.replace(getRegExp("-", "g"), "/");
+      var time = ymd + " " + data[i].data.start_time;
+      if (getDate(time) > getDate(ymd + " " + '08:10:00')) {
+        late.push(data[i])
+      } else {
+        sing.push(data[i])
+      }
+    }
+  }
+  late=late.concat(noSign);
+  lists = late.concat(sing);
+  return lists;
+}
+function sign(data,type){
+  var result={
+    'sing': '',
+    'singout':''
+  };
+  if(data==false){
+    result.sing = '未签到';
+    result.singout='未签退';
+  }else{
+    result.sing = data.start_time;
+    if (data.end_time!=" "){
+      result.singout = data.end_time;
+    }else{
+      result.singout = '未签退';
+    }
+  }
+  if (type==0){
+    return result.sing
+
+  }
+  return result.singout
+}
+module.exports={
+  filter: filter,
+  sort: sort,
+  sign: sign,
+}

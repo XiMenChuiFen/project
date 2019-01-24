@@ -1,0 +1,15 @@
+<view class="login">
+  <view class="header">
+    <image src="http://10.21.40.40/phz/WeixinStar/img/background.png" />
+  </view>
+  <view class="title">
+    <text>微信签到</text>
+  </view>
+  <view class="info">
+    <text>「每日打卡」是接入星辰平台数据的打卡小程序，微信登录后不会造成信息泄漏，请放心登录。</text>
+  </view>
+  <view class="button" >
+    <!-- <button class="btn" hover-class="btn-hover" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">登录</button> -->
+    <button class="btn"  wx:if="{{nextShow}}" bindtap='next'>下一步</button>
+  </view>
+</view>

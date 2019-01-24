@@ -9,4 +9,4 @@
 ![avatar](https://github.com/XiMenChuiFen/project/blob/master/clock/image/IMG_0084.PNG) 
 
 ### 流程图 
-![avatar](https://github.com/XiMenChuiFen/project/tree/master/clock/image/1.png) 
+![avatar](https://github.com/XiMenChuiFen/project/blob/master/clock/image/1.png) 
